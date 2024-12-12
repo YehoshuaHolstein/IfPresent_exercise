@@ -1,10 +1,9 @@
 package com.coderscampus.domain;
 
 import java.io.IOException;
+
 import java.util.List;
 import java.util.Map;
-
-import main.domain.Suspect;
 
 public class SuspectService {
 	
@@ -12,10 +11,14 @@ public class SuspectService {
 	
 	private void filterData(String filePath) throws IOException {
 		List<SuspectLocation> suspectLocationLineUp = fileService.getSuspectsFromFile(filePath);
-		Map<String, List<SuspectLocation>> suspectLocations = null; // Map - declaration
-		suspectLocations = suspectLocationLineUp.stream()
+		
+		List<SuspectLocation> suspectLocationFilter = suspectLocationLineUp.stream()
 				.filter(p -> p.getName().equals("CARMEN SANDIEGO"))
-				.
+				.findAny()
+				.ifPresent(System.out.println("Carmen Sandiego is in... " 
+						+ SuspectLocation.getCountry()));
+				
+				
 	}
 
 }
