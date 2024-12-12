@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class SuspectService {
 	
@@ -12,11 +13,11 @@ public class SuspectService {
 	private void filterData(String filePath) throws IOException {
 		List<SuspectLocation> suspectLocationLineUp = fileService.getSuspectsFromFile(filePath);
 		
-		List<SuspectLocation> suspectLocationFilter = suspectLocationLineUp.stream()
+		Optional<SuspectLocation> suspectLocationFilter = suspectLocationLineUp.stream()
 				.filter(p -> p.getName().equals("CARMEN SANDIEGO"))
 				.findAny()
-				.ifPresent(System.out.println("Carmen Sandiego is in... " 
-						+ SuspectLocation.getCountry()));
+				.ifPresent(p -> System.out.println("Carmen Sandiego is in... " 
+						+ p.getCountry()));
 				
 				
 	}
