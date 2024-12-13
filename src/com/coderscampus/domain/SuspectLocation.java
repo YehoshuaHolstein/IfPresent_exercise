@@ -2,8 +2,8 @@ package com.coderscampus.domain;
 
 public class SuspectLocation {
 	
-	String name;
 	String country;
+	String name;
 	
 	public String getName() {
 		return name;
@@ -18,7 +18,7 @@ public class SuspectLocation {
 		this.country = country;
 	}
 	
-	public SuspectLocation(String name, String country) {
+	public SuspectLocation(String country, String name) {
 		this.name = name;
 		this.country = country;
 	}

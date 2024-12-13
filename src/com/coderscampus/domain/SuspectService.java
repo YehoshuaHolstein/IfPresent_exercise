@@ -10,16 +10,17 @@ public class SuspectService {
 	
 	private final FileService fileService = new FileService();
 	
-	private void filterData(String filePath) throws IOException {
+	void filterData(String filePath) throws IOException {
 		List<SuspectLocation> suspectLocationLineUp = fileService.getSuspectsFromFile(filePath);
 		
 		Optional<SuspectLocation> suspectLocationFilter = suspectLocationLineUp.stream()
 				.filter(p -> p.getName().equals("CARMEN SANDIEGO"))
-				.findAny()
-				.ifPresent(p -> System.out.println("Carmen Sandiego is in... " 
-						+ SuspectLocation.getCountry(p)));
-				
-				
-	}
+				.findAny();
+		
+//		suspectLocationFilter.ifPresent(SuspectLocation -> System.out.println("Carmen Sandiego is in... " 
+//						+ SuspectLocation.getCountry()));	
+		suspectLocationFilter.ifPresentOrElse(SuspectLocation -> System.out.println("Carmen Sandiego is in... " 
+				+ SuspectLocation.getCountry()), () -> System.out.println("Galdang, just missed her!"));	
+	} 
 
 }
