@@ -17,7 +17,7 @@ public class SuspectService {
 				.filter(p -> p.getName().equals("CARMEN SANDIEGO"))
 				.findAny()
 				.ifPresent(p -> System.out.println("Carmen Sandiego is in... " 
-						+ p.getCountry()));
+						+ SuspectLocation.getCountry(p)));
 				
 				
 	}
